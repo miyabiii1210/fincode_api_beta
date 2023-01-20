@@ -7,28 +7,41 @@ import (
 	"net/http"
 )
 
-func GetPaymentInfo(ctx context.Context, internal GetPaymentRequest, orderId string) (*GetPaymentResponse, error) {
-	path := fmt.Sprintf("/v1/payments/%s", orderId)
-	req := NewRequest(http.MethodGet, path, internal)
+// 決済登録
+func PaymentRegistration(ctx context.Context, internal PaymentRegistrationRequest) (*PaymentRegistrationResponse, error) {
+	path := fmt.Sprint("/v1/payments")
+	req := NewRequest(http.MethodPost, path, internal)
 
 	res, err := sendRequest(ctx, req)
 	if err != nil {
 		return nil, err
 	}
 
-	ret := new(GetPaymentResponse)
+	ret := new(PaymentRegistrationResponse)
 	if err = json.Unmarshal(res, ret); err != nil {
 		return nil, err
 	}
 
-	return ret, nil
+	return ret, err
 }
 
-type GetPaymentRequest struct {
-	PayType string `json:"pay_type"`
+type PaymentRegistrationRequest struct {
+	PayType        string `json:"pay_type"`
+	ID             string `json:"id"`
+	JobCode        string `json:"job_code"`
+	Amount         string `json:"amount"`
+	Tax            string `json:"tax"`
+	ItemCode       string `json:"item_code"`
+	ClientField1   string `json:"client_field_1"`
+	ClientField2   string `json:"client_field_2"`
+	ClientField3   string `json:"client_field_3"`
+	SendURL        string `json:"send_url"`
+	TdsType        string `json:"tds_type"`
+	TdTenantName   string `json:"td_tenant_name"`
+	SubscriptionID string `json:"subscription_id"`
 }
 
-type GetPaymentResponse struct {
+type PaymentRegistrationResponse struct {
 	ShopID          string `json:"shop_id"`
 	ID              string `json:"id"`
 	PayType         string `json:"pay_type"`

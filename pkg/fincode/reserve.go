@@ -14,6 +14,15 @@ var (
 	ApiSecret string
 )
 
+const (
+	PAY_TYPE_CARD = "Card"
+
+	// CHECK:有効性確認, AUTH:仮売上, CAPTURE:売上確定
+	JOB_CODE_CHECK   = "CHECK"
+	JOB_CODE_AUTH    = "AUTH"
+	JOB_CODE_CAPTURE = "CAPTURE"
+)
+
 func init() {
 	baseURL = os.Getenv("FINCODE_BASE_URL")
 	ApiSecret = os.Getenv("FINCODE_API_SECRET")
