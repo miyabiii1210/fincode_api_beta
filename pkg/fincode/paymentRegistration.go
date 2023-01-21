@@ -22,7 +22,7 @@ func PaymentRegistration(ctx context.Context, internal PaymentRegistrationReques
 		return nil, err
 	}
 
-	return ret, err
+	return ret, nil
 }
 
 type PaymentRegistrationRequest struct {
