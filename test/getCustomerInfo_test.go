@@ -8,11 +8,10 @@ import (
 	"github.com/miyabiii1210/fincode_api_beta/go/pkg/util"
 )
 
-func TestGetPaymentInfo(t *testing.T) {
+func TestGetCustomerInfo(t *testing.T) {
 	type args struct {
-		ctx     context.Context
-		order   fincode.GetPaymentInfoRequest
-		orderId string
+		ctx        context.Context
+		customerId string
 	}
 	tests := []struct {
 		name    string
@@ -20,13 +19,10 @@ func TestGetPaymentInfo(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "get payment information test",
+			name: "get customer information test",
 			args: args{
-				ctx: context.TODO(),
-				order: fincode.GetPaymentInfoRequest{
-					PayType: fincode.PAY_TYPE_CARD,
-				},
-				orderId: "",
+				ctx:        context.TODO(),
+				customerId: "c_OoYczaFZRaS4hSNvdNTA-Q",
 			},
 			wantErr: false,
 		},
@@ -34,9 +30,9 @@ func TestGetPaymentInfo(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.GetPaymentInfo(tt.args.ctx, tt.args.order, tt.args.orderId)
+			ret, err := fincode.GetCustomerInfo(tt.args.ctx, tt.args.customerId)
 			if err != nil {
-				t.Errorf("GetPaymentInfo error: %v\n", err)
+				t.Errorf("GetCustomerInfo error : %v\n", err)
 			}
 			t.Log("result:", ret)
 			util.Sleep(1)
