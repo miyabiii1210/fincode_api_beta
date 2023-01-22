@@ -15,11 +15,20 @@ var (
 )
 
 const (
-	// Shop
+	// shop
 	SHOP_SERVER_NAME = "sa-proto-shop"
 
-	// Card
+	// customer
+	CUSTOMER_ID    = ""
+	CUSTOMER_NAME  = "Miyabii1210"
+	CUSTOMER_EMAIL = "abcdefg123456@gmail.com"
+
+	// card
+	CARD_ID       = ""
 	PAY_TYPE_CARD = "Card"
+
+	// purchase
+	PURCHASE_METHOD = "1" // 支払い方法（1:一括, 2:分割）
 
 	// CHECK:有効性確認, AUTH:仮売上, CAPTURE:売上確定
 	JOB_CODE_CHECK   = "CHECK"

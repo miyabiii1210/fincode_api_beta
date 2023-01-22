@@ -24,8 +24,8 @@ func TestCustomerRegistration(t *testing.T) {
 				ctx: context.TODO(),
 				order: fincode.CustomerRegistrationRequest{
 					ID:    "", // 未指定の場合はfincodeでユニークなIDを設定
-					Name:  "Miyabii1210",
-					Email: "abcdefg123456@gmail.com",
+					Name:  fincode.CUSTOMER_NAME,
+					Email: fincode.CUSTOMER_EMAIL,
 				},
 			},
 			wantErr: false,

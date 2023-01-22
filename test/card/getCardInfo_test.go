@@ -8,11 +8,11 @@ import (
 	"github.com/miyabiii1210/fincode_api_beta/go/pkg/util"
 )
 
-func TestUpdateCustomerInfo(t *testing.T) {
+func TestGetCardInfo(t *testing.T) {
 	type args struct {
 		ctx        context.Context
-		order      fincode.UpdateCustomerInfoRequest
 		customerId string
+		cardId     string
 	}
 	tests := []struct {
 		name    string
@@ -20,14 +20,11 @@ func TestUpdateCustomerInfo(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "update customer information test",
+			name: "get card information test",
 			args: args{
-				ctx: context.TODO(),
-				order: fincode.UpdateCustomerInfoRequest{
-					Name:  "miyabii 1220",
-					Email: "miyabiii1210@gmail.com",
-				},
-				customerId: "c_OoYczaFZRaS4hSNvdNTA-Q",
+				ctx:        context.TODO(),
+				customerId: fincode.CUSTOMER_ID,
+				cardId:     fincode.CARD_ID,
 			},
 			wantErr: false,
 		},
@@ -35,9 +32,9 @@ func TestUpdateCustomerInfo(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.UpdateCustomerInfo(tt.args.ctx, &tt.args.order, tt.args.customerId)
+			ret, err := fincode.GetCardInfo(tt.args.ctx, tt.args.customerId, tt.args.cardId)
 			if err != nil {
-				t.Errorf("UpdateCustomerInfo error: %v\n", err)
+				t.Errorf("GetCardInfo error: %v\n", err)
 			}
 			t.Log("result:", ret)
 			util.Sleep(1)

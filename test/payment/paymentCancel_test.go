@@ -8,10 +8,11 @@ import (
 	"github.com/miyabiii1210/fincode_api_beta/go/pkg/util"
 )
 
-func TestPaymentRegistration(t *testing.T) {
+func TestPaymentCancel(t *testing.T) {
 	type args struct {
-		ctx   context.Context
-		order fincode.PaymentRegistrationRequest
+		ctx     context.Context
+		order   fincode.PaymentCancelRequest
+		orderId string
 	}
 	tests := []struct {
 		name    string
@@ -19,15 +20,14 @@ func TestPaymentRegistration(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "payment registration test",
+			name: "payment cancel test",
 			args: args{
 				ctx: context.TODO(),
-				order: fincode.PaymentRegistrationRequest{
-					PayType: fincode.PAY_TYPE_CARD,
-					JobCode: fincode.JOB_CODE_CAPTURE,
-					Amount:  "2000",
-					Tax:     "0",
+				order: fincode.PaymentCancelRequest{
+					PayType:  fincode.PAY_TYPE_CARD,
+					AccessID: "",
 				},
+				orderId: "",
 			},
 			wantErr: false,
 		},
@@ -35,9 +35,9 @@ func TestPaymentRegistration(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.PaymentRegistration(tt.args.ctx, &tt.args.order)
+			ret, err := fincode.PaymentCancel(tt.args.ctx, &tt.args.order, tt.args.orderId)
 			if err != nil {
-				t.Errorf("PaymentRegistration error: %v\n", err)
+				t.Errorf("PaymentCancel error %v\n", err)
 			}
 			t.Log("result:", ret)
 			util.Sleep(1)

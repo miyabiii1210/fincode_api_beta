@@ -26,9 +26,9 @@ func TestPaymentExecution(t *testing.T) {
 				order: fincode.PaymentExecutionRequest{
 					PayType:    fincode.PAY_TYPE_CARD,
 					AccessID:   "",
-					CustomerID: "",
-					CardID:     "",
-					Method:     "",
+					CustomerID: fincode.CUSTOMER_ID,
+					CardID:     fincode.CARD_ID,
+					Method:     fincode.PURCHASE_METHOD,
 				},
 				orderId: "",
 			},
