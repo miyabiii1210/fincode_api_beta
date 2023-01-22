@@ -8,7 +8,7 @@ import (
 )
 
 // 決済実行（事前に決済登録APIを正常終了させておく必要がある）
-func PaymentExecution(ctx context.Context, internal PaymentExecutionRequest, orderId string) (*PaymentExecutionResponse, error) {
+func PaymentExecution(ctx context.Context, internal *PaymentExecutionRequest, orderId string) (*PaymentExecutionResponse, error) {
 	path := fmt.Sprintf("/v1/payments/%s", orderId)
 	req := NewRequest(http.MethodPut, path, internal)
 

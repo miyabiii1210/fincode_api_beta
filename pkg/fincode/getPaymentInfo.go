@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func GetPaymentInfo(ctx context.Context, internal GetPaymentInfoRequest, orderId string) (*GetPaymentInfoResponse, error) {
+func GetPaymentInfo(ctx context.Context, internal *GetPaymentInfoRequest, orderId string) (*GetPaymentInfoResponse, error) {
 	path := fmt.Sprintf("/v1/payments/%s", orderId)
 	req := NewRequest(http.MethodGet, path, internal)
 

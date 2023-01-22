@@ -35,7 +35,7 @@ func TestPaymentRegistration(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.PaymentRegistration(tt.args.ctx, tt.args.order)
+			ret, err := fincode.PaymentRegistration(tt.args.ctx, &tt.args.order)
 			if err != nil {
 				t.Errorf("PaymentRegistration error: %v\n", err)
 			}

@@ -23,7 +23,9 @@ func TestCustomerRegistration(t *testing.T) {
 			args: args{
 				ctx: context.TODO(),
 				order: fincode.CustomerRegistrationRequest{
-					ID: "",
+					ID:    "", // 未指定の場合はfincodeでユニークなIDを設定
+					Name:  "Miyabii1210",
+					Email: "abcdefg123456@gmail.com",
 				},
 			},
 			wantErr: false,
@@ -32,7 +34,7 @@ func TestCustomerRegistration(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.CustomerRegistration(tt.args.ctx, tt.args.order)
+			ret, err := fincode.CustomerRegistration(tt.args.ctx, &tt.args.order)
 			if err != nil {
 				t.Errorf("CustomerRegistration error: %v\n", err)
 				return

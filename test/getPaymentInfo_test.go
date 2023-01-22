@@ -34,7 +34,7 @@ func TestGetPaymentInfo(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.GetPaymentInfo(tt.args.ctx, tt.args.order, tt.args.orderId)
+			ret, err := fincode.GetPaymentInfo(tt.args.ctx, &tt.args.order, tt.args.orderId)
 			if err != nil {
 				t.Errorf("GetPaymentInfo error: %v\n", err)
 			}

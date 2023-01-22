@@ -8,7 +8,7 @@ import (
 )
 
 // 決済登録
-func PaymentRegistration(ctx context.Context, internal PaymentRegistrationRequest) (*PaymentRegistrationResponse, error) {
+func PaymentRegistration(ctx context.Context, internal *PaymentRegistrationRequest) (*PaymentRegistrationResponse, error) {
 	path := fmt.Sprint("/v1/payments")
 	req := NewRequest(http.MethodPost, path, internal)
 

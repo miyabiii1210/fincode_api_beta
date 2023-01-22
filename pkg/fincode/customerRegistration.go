@@ -8,7 +8,7 @@ import (
 )
 
 // 顧客登録
-func CustomerRegistration(ctx context.Context, internal CustomerRegistrationRequest) (*CustomerRegistrationResponse, error) {
+func CustomerRegistration(ctx context.Context, internal *CustomerRegistrationRequest) (*CustomerRegistrationResponse, error) {
 	path := fmt.Sprint("/v1/customers")
 	req := NewRequest(http.MethodPost, path, internal)
 

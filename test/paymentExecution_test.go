@@ -38,7 +38,7 @@ func TestPaymentExecution(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ret, err := fincode.PaymentExecution(tt.args.ctx, tt.args.order, tt.args.orderId)
+			ret, err := fincode.PaymentExecution(tt.args.ctx, &tt.args.order, tt.args.orderId)
 			if err != nil {
 				t.Errorf("PaymentExecution error: %v\n", err)
 			}
