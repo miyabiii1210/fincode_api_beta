@@ -22,7 +22,7 @@ func TestDeleteCustomerInfo(t *testing.T) {
 			name: "delete customer information test",
 			args: args{
 				ctx:        context.TODO(),
-				customerId: "c_OoYczaFZRaS4hSNvdNTA-Q",
+				customerId: "",
 			},
 			wantErr: false,
 		},
