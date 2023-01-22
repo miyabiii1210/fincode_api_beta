@@ -15,12 +15,20 @@ var (
 )
 
 const (
+	// Shop
+	SHOP_SERVER_NAME = "sa-proto-shop"
+
+	// Card
 	PAY_TYPE_CARD = "Card"
 
 	// CHECK:有効性確認, AUTH:仮売上, CAPTURE:売上確定
 	JOB_CODE_CHECK   = "CHECK"
 	JOB_CODE_AUTH    = "AUTH"
 	JOB_CODE_CAPTURE = "CAPTURE"
+
+	// URL
+	SUCCESS_URL = "https://go.dev/"
+	CANCEL_URL  = "https://developers.google.com/protocol-buffers/docs/overview?hl=ja"
 )
 
 func init() {
